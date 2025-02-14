@@ -1,4 +1,3 @@
-import React from "react";
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 
@@ -9,10 +8,18 @@ interface ApartmentCardProps {
     description: string;
     imageUrl: string;
     avatarUrl: string;
+    className?: string; // Cho phép className là optional
 }
 
-const ApartmentCard: React.FC<ApartmentCardProps> = ({ title, description, imageUrl, avatarUrl }) => (
+const ApartmentCard: React.FC<ApartmentCardProps> = ({
+    title,
+    description,
+    imageUrl,
+    avatarUrl,
+    className = "",
+}) => (
     <Card
+        className={className}
         style={{ width: 300 }}
         cover={<img alt="apartment" src={imageUrl} />}
         actions={[
