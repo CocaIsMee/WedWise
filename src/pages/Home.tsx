@@ -1,4 +1,3 @@
-import React from "react";
 import ApartmentCard from "../component/card/index";
 import { Row, Col } from "antd";
 
