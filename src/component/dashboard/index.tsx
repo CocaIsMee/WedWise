@@ -2,16 +2,21 @@ import React, { useState } from "react";
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    UserOutlined,
+    BarChartOutlined,
     SettingOutlined,
+    UserOutlined,
+    StockOutlined,
+    FormOutlined,
     AppstoreOutlined,
     LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme, Avatar, Dropdown, message } from "antd";
 import { useNavigate } from "react-router-dom";
-import DashboardHome from "../../pages/admin/dashboard";
-import Users from "../../pages/admin/user";
-import Manage from "../../pages/admin/manage";
+import DashboardHome from "../../pages/admin/dashboard/index";
+import WithDraw from "../../pages/admin/withdraw/index";
+import SalesReport from "../../pages/admin/sales-report";
+import Settings from "../../pages/Setting";
+import Manage from "../../pages/admin/manage/index";
 
 const { Header, Sider, Content } = Layout;
 
@@ -29,10 +34,14 @@ const Dashboard: React.FC = () => {
         switch (selectedPage) {
             case "dashboard":
                 return <DashboardHome />;
-            case "users":
-                return <Users />;
+            case "withdraw":
+                return <WithDraw />;
+            case "salesreport":
+                return <SalesReport />;
             case "manage":
                 return <Manage />;
+            case "settings":
+                return <Settings />;
             default:
                 return <DashboardHome />;
         }
@@ -50,7 +59,7 @@ const Dashboard: React.FC = () => {
     const userMenu = (
         <Menu
             items={[
-                { key: "profile", icon: <UserOutlined />, label: "Profile" },
+                { key: "profile", icon: <BarChartOutlined />, label: "Profile" },
                 { key: "settings", icon: <SettingOutlined />, label: "Settings" },
                 { key: "logout", icon: <LogoutOutlined />, label: "Logout", onClick: handleLogout },
             ]}
@@ -73,10 +82,13 @@ const Dashboard: React.FC = () => {
                     <Menu.Item key="dashboard" icon={<AppstoreOutlined />}>
                         Dashboard
                     </Menu.Item>
-                    <Menu.Item key="users" icon={<UserOutlined />}>
-                        Users
+                    <Menu.Item key="withdraw" icon={<BarChartOutlined />}>
+                        WithDraw
                     </Menu.Item>
-                    <Menu.Item key="manage" icon={<SettingOutlined />}>
+                    <Menu.Item key="salesreport" icon={<StockOutlined />}>
+                        Sales Report
+                    </Menu.Item>
+                    <Menu.Item key="manage" icon={<FormOutlined />}>
                         Manage
                     </Menu.Item>
                     <Menu.Item key="settings" icon={<SettingOutlined />}>

@@ -4,10 +4,11 @@ import Layout from "./Layout/Layout";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Login from "./pages/login";
+import LoginAdmin from "./pages/admin/login/index";
 import Settings from "../src/pages/Setting";
-import Dashboard from "./pages/admin/dashboard";
-import Users from "./pages/admin/user";
-import Manage from "./pages/admin/manage";
+import Dashboard from "./pages/admin/dashboard/index";
+import WithDraw from "./pages/admin/withdraw/index";
+import Manage from "./pages/admin/manage/index";
 import DashboardLayout from "./component/dashboard";
 
 const App: React.FC = () => {
@@ -15,9 +16,10 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/dashboard" element={<DashboardLayout />} />
         <Route path="dbhome" element={<Dashboard />} />
-        <Route path="users" element={<Users />} />
+        <Route path="users" element={<WithDraw />} />
         <Route path="manage" element={<Manage />} />
         <Route path="/home" element={<Layout />}>
           <Route index element={<Home />} />

@@ -3,19 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, Form, Input, message } from "antd";
 import { GoogleOutlined } from "@ant-design/icons";
 
+interface LoginValues {
+    email: string;
+    password: string;
+}
+
 const Login: React.FC = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
-    const onFinish = (values: { email: string; password: string }) => {
+    const onFinish = (values: LoginValues) => {
         setLoading(true);
 
         setTimeout(() => {
             setLoading(false);
-
             if (values.email === "phuanh@gmail.com" && values.password === "12345") {
                 message.success("Login successful!");
-                navigate("/home"); // Chuyển hướng đến trang Home
+                navigate("/home");
             } else {
                 message.error("Incorrect email or password!");
             }
@@ -23,22 +27,22 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="bg-white shadow-lg rounded-lg flex max-w-4xl w-[400px]">
-                {/* Hình ảnh */}
-                <div className="w-1/2 hidden md:block">
+        <div className="flex items-center justify-center min-h-screen bg-gray-50 p-6">
+            <div className="bg-white shadow-2xl rounded-2xl flex flex-col md:flex-row max-w-lg w-full overflow-hidden border border-gray-300 p-6">
+                {/* Image Section */}
+                <div className="hidden md:block md:w-1/3">
                     <img
-                        src="https://source.unsplash.com/800x600/?apartment"
+                        src="https://source.unsplash.com/400x600/?modern-apartment"
                         alt="Login"
-                        className="w-full h-full object-cover rounded-l-lg"
+                        className="w-full h-full object-cover"
                     />
                 </div>
-
-                {/* Form đăng nhập */}
-                <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
+                {/* Login Form Section */}
+                <div className="w-full md:w-2/3 p-6 flex flex-col justify-center">
                     <div className="text-center">
                         <img src="/logo.png" alt="Logo" className="mx-auto w-16" />
-                        <h2 className="text-2xl font-bold mt-4">Nice to see you again</h2>
+                        <h2 className="text-2xl font-bold mt-4 text-gray-700">Welcome Back</h2>
+                        <p className="text-gray-500 text-sm">Sign in to continue</p>
                     </div>
 
                     <Form layout="vertical" onFinish={onFinish} className="mt-6">
@@ -47,7 +51,7 @@ const Login: React.FC = () => {
                             name="email"
                             rules={[{ required: true, message: "Please enter your email!" }]}
                         >
-                            <Input size="large" placeholder="Enter your email" />
+                            <Input size="large" placeholder="Enter your email" className="rounded-md" />
                         </Form.Item>
 
                         <Form.Item
@@ -55,21 +59,21 @@ const Login: React.FC = () => {
                             name="password"
                             rules={[{ required: true, message: "Please enter your password!" }]}
                         >
-                            <Input.Password size="large" placeholder="Enter password" />
+                            <Input.Password size="large" placeholder="Enter password" className="rounded-md" />
                         </Form.Item>
 
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between text-sm">
                             <Form.Item name="remember" valuePropName="checked">
                                 <Checkbox>Remember me</Checkbox>
                             </Form.Item>
-                            <a href="#" className="text-blue-500 text-sm">Forgot password?</a>
+                            <a href="#" className="text-blue-500 hover:underline">Forgot password?</a>
                         </div>
 
                         <Form.Item>
                             <Button
                                 type="primary"
                                 htmlType="submit"
-                                className="w-full"
+                                className="w-full rounded-md"
                                 size="large"
                                 loading={loading}
                             >
@@ -80,14 +84,14 @@ const Login: React.FC = () => {
 
                     <Button
                         icon={<GoogleOutlined />}
-                        className="w-full bg-gray-800 text-white p-3 rounded mt-2 flex items-center justify-center"
+                        className="w-full bg-gray-900 text-white p-3 rounded-md mt-2 flex items-center justify-center hover:bg-gray-700"
                         size="large"
                     >
                         Sign in with Google
                     </Button>
 
-                    <p className="text-center mt-4">
-                        Don’t have an account? <a href="#" className="text-blue-500">Sign up now</a>
+                    <p className="text-center text-gray-600 mt-4">
+                        Don’t have an account? <a href="#" className="text-blue-500 hover:underline">Sign up now</a>
                     </p>
                 </div>
             </div>
