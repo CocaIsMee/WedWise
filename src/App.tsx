@@ -9,7 +9,8 @@ import Settings from "../src/pages/Setting";
 import Dashboard from "./pages/admin/dashboard/index";
 import WithDraw from "./pages/admin/withdraw/index";
 import Manage from "./pages/admin/manage/index";
-import DashboardLayout from "./component/dashboard";
+// import DashboardLayout from "./component/dashboard";
+import DashboardAdmin from "./pages/admin/dashboard/maindb";
 
 const App: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/admin" element={<LoginAdmin />} />
-        <Route path="/dashboard" element={<DashboardLayout />} />
+        <Route path="/admin/dashboard" element={<DashboardAdmin />} />
         <Route path="dbhome" element={<Dashboard />} />
         <Route path="users" element={<WithDraw />} />
         <Route path="manage" element={<Manage />} />

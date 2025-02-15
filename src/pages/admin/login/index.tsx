@@ -16,7 +16,7 @@ const AdminLogin: React.FC = () => {
         setTimeout(() => {
             if (email === 'admin@example.com' && password === 'admin123') {
                 alert('Login successful!');
-                navigate('/dashboard');
+                navigate('/admin/dashboard');
             } else {
                 alert('Invalid email or password');
             }
