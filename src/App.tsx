@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'antd/dist/reset.css';
 import Layout from "./Layout/Layout";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
@@ -9,6 +10,8 @@ import Settings from "../src/pages/Setting";
 import Dashboard from "./pages/admin/dashboard/index";
 import WithDraw from "./pages/admin/withdraw/index";
 import Manage from "./pages/admin/manage/index";
+import QuizManage from "./pages/admin/quiz-manage/index";
+import AnswerManage from "./pages/admin/answer-manage/index";
 import ProfileAdmin from "./pages/admin/profile";
 // import DashboardLayout from "./component/dashboard";
 import DashboardAdmin from "./pages/admin/dashboard/maindb";
@@ -24,6 +27,8 @@ const App: React.FC = () => {
         <Route path="dbhome" element={<Dashboard />} />
         <Route path="users" element={<WithDraw />} />
         <Route path="manage" element={<Manage />} />
+        <Route path="quiz-manage" element={<QuizManage />} />
+        <Route path="answer-manage" element={<AnswerManage />} />
         <Route path="/home" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="profile" element={<Profile />} />
