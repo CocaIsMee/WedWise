@@ -12,6 +12,11 @@ import Manage from "./pages/admin/manage/index";
 import ProfileAdmin from "./pages/admin/profile";
 // import DashboardLayout from "./component/dashboard";
 import DashboardAdmin from "./pages/admin/dashboard/maindb";
+import TherapistLayout from "./therapistLayout/TherapistLayout";
+import TherapistDashboard from "./pages/therapist/TherapistDashboard";
+import TherapistProfile from "./pages/therapist/TherapistProfile";
+import TherapistAppointments from "./pages/therapist/TherapistAppointment";
+import TherapistCalendar from "./pages/therapist/TherapistCalendar";
 
 const App: React.FC = () => {
   return (
@@ -28,6 +33,12 @@ const App: React.FC = () => {
           <Route index element={<Home />} />
           <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
+        </Route>
+        <Route path="/therapist" element={<TherapistLayout />}>
+          <Route index element={<TherapistDashboard />} />
+          <Route path="profile" element={<TherapistProfile />} />
+          <Route path="appointments" element={<TherapistAppointments />} />
+          <Route path="calendar" element={<TherapistCalendar />} />
         </Route>
       </Routes>
     </Router>

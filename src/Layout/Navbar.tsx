@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
             <Link to="/find" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
               Find a Therapist
             </Link>
-            <Link to="/profile" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
+            <Link to="/home/profile" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
               Profile
             </Link>
             <Link to="/settings" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">

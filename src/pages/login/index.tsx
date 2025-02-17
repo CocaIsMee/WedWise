@@ -27,20 +27,23 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-50 p-6">
-            <div className="bg-white shadow-2xl rounded-2xl flex flex-col md:flex-row max-w-lg w-full overflow-hidden border border-gray-300 p-6">
+        <div 
+    className="flex items-center justify-center min-h-screen bg-cover bg-center p-6" 
+    style={{ backgroundImage: "url('/src/assets/Login.jpg')" }}>
+        <div className="absolute inset-0 bg-white/30 backdrop-blur-lg"></div>
+
+    <div className="bg-white/30 backdrop-blur-md shadow-lg rounded-2xl flex flex-col md:flex-row max-w-3xl w-full overflow-hidden border border-gray-300">
+
                 {/* Image Section */}
-                <div className="hidden md:block md:w-1/3">
-                    <img
-                        src="https://source.unsplash.com/400x600/?modern-apartment"
-                        alt="Login"
-                        className="w-full h-full object-cover"
-                    />
+                <div 
+                        className="hidden md:block md:w-2/3 bg-cover bg-center" 
+                        style={{ backgroundImage: "url('/src/assets/Hand.png')" }}>
                 </div>
+
                 {/* Login Form Section */}
-                <div className="w-full md:w-2/3 p-6 flex flex-col justify-center">
+                <div className="w-full md:w-2/3 p-8 flex flex-col justify-center">
                     <div className="text-center">
-                        <img src="/logo.png" alt="Logo" className="mx-auto w-16" />
+                        <img src="/src/assets/Wedwise.png" alt="Logo" className="mx-auto w-16" />
                         <h2 className="text-2xl font-bold mt-4 text-gray-700">Welcome Back</h2>
                         <p className="text-gray-500 text-sm">Sign in to continue</p>
                     </div>
@@ -51,7 +54,7 @@ const Login: React.FC = () => {
                             name="email"
                             rules={[{ required: true, message: "Please enter your email!" }]}
                         >
-                            <Input size="large" placeholder="Enter your email" className="rounded-md" />
+                            <Input size="large" placeholder="Enter your email" className="rounded-lg border-gray-300" />
                         </Form.Item>
 
                         <Form.Item
@@ -59,7 +62,7 @@ const Login: React.FC = () => {
                             name="password"
                             rules={[{ required: true, message: "Please enter your password!" }]}
                         >
-                            <Input.Password size="large" placeholder="Enter password" className="rounded-md" />
+                            <Input.Password size="large" placeholder="Enter password" className="rounded-lg border-gray-300" />
                         </Form.Item>
 
                         <div className="flex items-center justify-between text-sm">
@@ -73,7 +76,7 @@ const Login: React.FC = () => {
                             <Button
                                 type="primary"
                                 htmlType="submit"
-                                className="w-full rounded-md"
+                                className="w-full rounded-lg bg-blue-600 hover:bg-blue-700 transition-all"
                                 size="large"
                                 loading={loading}
                             >
@@ -84,7 +87,7 @@ const Login: React.FC = () => {
 
                     <Button
                         icon={<GoogleOutlined />}
-                        className="w-full bg-gray-900 text-white p-3 rounded-md mt-2 flex items-center justify-center hover:bg-gray-700"
+                        className="w-full bg-gray-900 text-white py-3 rounded-lg mt-2 flex items-center justify-center hover:bg-gray-700 transition-all"
                         size="large"
                     >
                         Sign in with Google
@@ -93,7 +96,7 @@ const Login: React.FC = () => {
                     <p className="text-center text-gray-600 mt-4">
                         Don’t have an account? <a href="#" className="text-blue-500 hover:underline">Sign up now</a>
                     </p>
-                </div>
+                </div>  
             </div>
         </div>
     );
