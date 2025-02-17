@@ -58,13 +58,21 @@ const Dashboard: React.FC = () => {
     // Menu dropdown khi click vào Avatar
     const userMenu = (
         <Menu
+            onClick={({ key }) => {
+                if (key === "profile") {
+                    navigate("/admin/profile"); // Chuyển hướng đến trang Profile Admin
+                } else if (key === "logout") {
+                    handleLogout();
+                }
+            }}
             items={[
-                { key: "profile", icon: <BarChartOutlined />, label: "Profile" },
+                { key: "profile", icon: <UserOutlined />, label: "Profile" },
                 { key: "settings", icon: <SettingOutlined />, label: "Settings" },
-                { key: "logout", icon: <LogoutOutlined />, label: "Logout", onClick: handleLogout },
+                { key: "logout", icon: <LogoutOutlined />, label: "Logout" },
             ]}
         />
     );
+
 
     return (
         <Layout style={{ minHeight: "100vh" }}>

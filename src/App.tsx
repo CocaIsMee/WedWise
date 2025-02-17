@@ -9,6 +9,7 @@ import Settings from "../src/pages/Setting";
 import Dashboard from "./pages/admin/dashboard/index";
 import WithDraw from "./pages/admin/withdraw/index";
 import Manage from "./pages/admin/manage/index";
+import ProfileAdmin from "./pages/admin/profile";
 // import DashboardLayout from "./component/dashboard";
 import DashboardAdmin from "./pages/admin/dashboard/maindb";
 
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Login />} />
         <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/admin/dashboard" element={<DashboardAdmin />} />
+        <Route path="/admin/profile" element={<ProfileAdmin />} />
         <Route path="dbhome" element={<Dashboard />} />
         <Route path="users" element={<WithDraw />} />
         <Route path="manage" element={<Manage />} />
