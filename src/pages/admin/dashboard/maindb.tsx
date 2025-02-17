@@ -8,6 +8,8 @@ import {
     StockOutlined,
     FormOutlined,
     AppstoreOutlined,
+    FileDoneOutlined,
+    FileProtectOutlined,
     LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme, Avatar, Dropdown, message } from "antd";
@@ -16,6 +18,8 @@ import DashboardHome from "../dashboard/index";
 import WithDraw from "../withdraw/index";
 import SalesReport from "../sales-report";
 import Settings from "../setting";
+import QuizManage from "../quiz-manage";
+import AnswerManage from "../answer-manage";
 import Manage from "../manage/index";
 
 const { Header, Sider, Content } = Layout;
@@ -40,6 +44,10 @@ const Dashboard: React.FC = () => {
                 return <SalesReport />;
             case "manage":
                 return <Manage />;
+            case "quiz-manage":
+                return <QuizManage />;
+            case "answer-manage":
+                return <AnswerManage />;
             case "settings":
                 return <Settings />;
             default:
@@ -98,6 +106,12 @@ const Dashboard: React.FC = () => {
                     </Menu.Item>
                     <Menu.Item key="manage" icon={<FormOutlined />}>
                         Manage
+                    </Menu.Item>
+                    <Menu.Item key="quiz-manage" icon={<FileDoneOutlined />}>
+                        Quiz Manage
+                    </Menu.Item>
+                    <Menu.Item key="answer-manage" icon={<FileProtectOutlined />}>
+                        Answer Manage
                     </Menu.Item>
                     <Menu.Item key="settings" icon={<SettingOutlined />}>
                         Settings
