@@ -4,10 +4,10 @@ import { Button, Form, Input, Checkbox, notification } from "antd";
 import { GoogleOutlined, CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
 import AuthService from "../service/AuthService";
 
-interface LoginValues {
-    email: string;
-    password: string;
-}
+// interface LoginValues {
+//     email: string;
+//     password: string;
+// }
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
