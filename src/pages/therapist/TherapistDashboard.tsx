@@ -116,7 +116,7 @@ const TherapistDashboard = () => {
           <ResponsiveContainer width="100%" height={250}>
             <PieChart>
               <Pie data={reviewData} cx="50%" cy="50%" outerRadius={80} fill="#8884d8" dataKey="value" label>
-                {reviewData.map((entry, index) => (
+                {reviewData.map((_, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index]} />
                 ))}
               </Pie>
