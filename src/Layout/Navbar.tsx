@@ -1,41 +1,87 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaSearch, FaUserCircle } from "react-icons/fa";
+import { Dropdown, Menu } from "antd";
+import AuthService from "../pages/service/AuthService";
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    AuthService.logout();
+    navigate("/");
+  };
+
+  const userMenu = (
+    <Menu>
+      <Menu.Item key="profile">
+        <Link to="/profile">Profile</Link>
+      </Menu.Item>
+      <Menu.Item key="settings">
+        <Link to="/settings">Settings</Link>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="logout" onClick={handleLogout}>
+        Logout
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
-    <nav className="bg-white shadow-lg">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          {/* Đảm bảo các nút trải đều */}
-          <div className="flex justify-evenly items-center w-full">
-            <Link to="/" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
-              Home
-            </Link>
-            <Link to="/married" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
-              Getting Married
-            </Link>
-            <Link to="/quizzes" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
-              Quizzes
-            </Link>
-            <Link to="/counseling" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
-              Counseling
-            </Link>
-            <Link to="/help" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
-              Help
-            </Link>
-            <Link to="/find" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
-              Find a Therapist
-            </Link>
-            <Link to="/home/profile" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
-              Profile
-            </Link>
-            <Link to="/settings" className="flex-1 text-center text-black text-lg font-bold hover:text-yellow-300 transition duration-300">
-              Settings
-            </Link>
+    <header className="bg-white shadow-md">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        {/* Logo */}
+        <h1 className="text-2xl font-bold text-blue-600">
+          <Link to="/">WedWise</Link>
+        </h1>
+
+        {/* Navbar */}
+        <nav className="hidden md:flex space-x-6">
+          <Link to="/home" className="hover:text-blue-500 transition">
+            Home
+          </Link>
+          <Link to="/getting-married" className="hover:text-blue-500 transition">
+            Getting Married
+          </Link>
+          <Link to="/quizzes" className="hover:text-blue-500 transition">
+            Quizzes
+          </Link>
+          <Link to="/counseling" className="hover:text-blue-500 transition">
+            Counseling
+          </Link>
+          <Link to="/help" className="hover:text-blue-500 transition">
+            Help
+          </Link>
+          <Link to="/home/therapist" className="hover:text-blue-500 transition">
+            Find a Therapist
+          </Link>
+          <Link to="/home/my-booking" className="hover:text-blue-500 transition">
+            My Booking
+          </Link>
+        </nav>
+
+        {/* Search & User Info */}
+        <div className="flex items-center space-x-4">
+          {/* Search Bar */}
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="border rounded-full px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            <FaSearch className="absolute left-3 top-3 text-gray-500" />
           </div>
+
+          {/* User Info with Dropdown */}
+          <Dropdown overlay={userMenu} trigger={['click']} placement="bottomRight">
+            <div className="flex items-center space-x-2 cursor-pointer">
+              <span className="text-gray-700 font-medium">Username</span>
+              <FaUserCircle className="text-3xl text-gray-600" />
+            </div>
+          </Dropdown>
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 

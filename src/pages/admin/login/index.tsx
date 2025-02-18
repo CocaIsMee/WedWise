@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CustomMessage from "../../../component/message/index";
 
 const AdminLogin: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
+    const [message, setMessage] = useState<{ type: "success" | "error" | "warning"; text: string } | null>(null);
     const navigate = useNavigate();
 
-    const onSubmit = (event: React.FormEvent) => {
+    const onSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         setLoading(true);
 
@@ -13,19 +15,37 @@ const AdminLogin: React.FC = () => {
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
 
-        setTimeout(() => {
-            if (email === 'admin@example.com' && password === 'admin123') {
-                alert('Login successful!');
-                navigate('/admin/dashboard');
+        try {
+            const response = await fetch(
+                "https://premaritalcounselingplatform-dhetaherhybqe8bg.southeastasia-01.azurewebsites.net/api/Auth/Login",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                }
+            );
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem("token", data.token);
+                setMessage({ type: "success", text: "Đăng nhập thành công!" });
+
+                setTimeout(() => navigate("/admin/dashboard"), 2000);
             } else {
-                alert('Invalid email or password');
+                setMessage({ type: "error", text: "Email hoặc mật khẩu không đúng!" });
             }
+            // } catch (error) {
+            //     setMessage({ type: "error", text: "Lỗi kết nối, vui lòng thử lại!" });
+        } finally {
             setLoading(false);
-        }, 1000);
+        }
     };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-purple-500">
+            {message && <CustomMessage type={message.type} message={message.text} onClose={() => setMessage(null)} />}
+
             <div className="bg-white rounded-lg shadow-lg flex overflow-hidden max-w-4xl w-full">
                 {/* Image Section */}
                 <div className="hidden md:block w-1/2">
@@ -72,7 +92,7 @@ const AdminLogin: React.FC = () => {
                                 className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
                                 disabled={loading}
                             >
-                                {loading ? 'Logging in...' : 'Log In'}
+                                {loading ? "Logging in..." : "Log In"}
                             </button>
                         </div>
                     </form>
